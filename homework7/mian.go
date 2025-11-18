@@ -9,5 +9,34 @@ import "fmt"
 将当前区间与切片中最后一个区间进行比较，如果有重叠，则合并区间；如果没有重叠，则将当前区间添加到切片中。
 */
 func main() {
-	fmt.Println("111")
+	nums := [][]int{
+		{2, 3},
+		{1, 2},
+		{7, 9},
+		{4, 6},
+		{2, 7},
+	}
+
+	n := len(nums)
+	for i := 0; i < n-1; i++ {
+		for j := i + 1; j < n-i; j++ {
+			if nums[j-1][0] > nums[j][0] {
+				nums[j-1], nums[j] = nums[j], nums[j-1]
+			}
+		}
+	}
+	// for i, v := range nums {
+	// 		if v[0] < nums[i+1][0] {
+	// 			tem = v
+	// 			v = nums[j]
+	// 			nums[j] = tem
+	// 		}
+
+	// }
+	arr := [][]int{
+		{nums[0][0], nums[n-1][1]},
+	}
+
+	fmt.Println(arr)
+
 }
